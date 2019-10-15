@@ -1,6 +1,6 @@
 /*	SHAPE CLASSES
 	
-	For practice with abstract base classes, pure virtual functions, inheritance
+	For practice with abstract base classes, pure virtual function overriding, inheritance
 
 
 
@@ -299,16 +299,16 @@ int main()
 	// Eight derived classes (4 2D, 4 3D), each overriding pure virtual functions -------
 
 	//Create 2D shapes
-	rectangle rectangle_1;
-	square square_1;
-	ellipse ellipse_1;
-	circle circle_1;
+	rectangle	rectangle_1;
+	square		square_1;
+	ellipse		ellipse_1;
+	circle		circle_1;
 
 	//Create 3D shapes
-	cuboid cuboid_1;
-	cube cube_1;
-	ellipsoid ellipsoid_1;
-	sphere sphere_1;
+	cuboid		cuboid_1;
+	cube		cube_1;
+	ellipsoid	ellipsoid_1;
+	sphere		sphere_1;
 
 	prism prism_1(10, &square_1);
 
@@ -321,17 +321,17 @@ int main()
 	// Construct new shapes based on previously constructed shapes
 	// No new memory allocated!
 	// Uses dereferenced shapes to construct new shape in array
-	shape_storage[0] = new (&rectangle_1) rectangle;
-	shape_storage[1] = new (&square_1) square;
-	shape_storage[2] = new (&ellipse_1) ellipse;
-	shape_storage[3] = new (&circle_1) circle;
+	shape_storage[0] = new (&rectangle_1)	rectangle;
+	shape_storage[1] = new (&square_1)		square;
+	shape_storage[2] = new (&ellipse_1)		ellipse;
+	shape_storage[3] = new (&circle_1)		circle;
 
-	shape_storage[4] = new (&cuboid_1) cuboid;
-	shape_storage[5] = new (&cube_1) cube;
-	shape_storage[6] = new (&ellipsoid_1) ellipsoid;
-	shape_storage[7] = new (&sphere_1) sphere;
+	shape_storage[4] = new (&cuboid_1)		cuboid;
+	shape_storage[5] = new (&cube_1)		cube;
+	shape_storage[6] = new (&ellipsoid_1)	ellipsoid;
+	shape_storage[7] = new (&sphere_1)		sphere;
 
-	shape_storage[8] = new (&prism_1) prism(prism_1);
+	shape_storage[8] = new (&prism_1)		prism(prism_1);
 
 	
 	// Code correctly prints out the area (2D) and area and volume (3D) of each shape -----
@@ -348,13 +348,14 @@ int main()
 	// Delete objects
 	for (int i = 0; i < n; i++) {
 
-		delete &shape_storage[i];
-		cout << i << endl;
+		//delete shape_storage[i];
+		cout << shape_storage[i] << endl;
 	}
 
+	cin.get();
 
 	// Delete array
-	delete[] shape_storage;
+	//delete[] shape_storage;
 
 
 }
